@@ -1,0 +1,58 @@
+= render "tabs"
+
+br
+.container
+  br
+  .row
+    .col-md-3
+      br
+      ul.nav.nav-pills.nav-stacked
+        li.active
+          a[href="#payment" data-toggle="tab"]= "Payment Preferences"
+        li
+          a[href="#information" data-toggle="tab"]= "Payment Information"
+        li
+          a[href="#security" data-toggle="tab"]= "Security"
+
+    .col-md-9
+      .tab-content
+        #payment.tab-pane.active
+
+        #information.tab-pane
+          / -# FIXME
+          / = simple_form_for PaymentMethod.new, url: '/' do |f|
+          /   = f.input :user_id, as: :hidden, value: @user.id
+          /   .form-group
+          /     label.col-md-3.text-right
+          /       = "Payment methods"
+          /     .col-md-9
+          /       = select_tag :payment_methods, options_for_select(@user.payment_methods.map {|pm| [pm.provider, pm.id]})
+          /       / = "Add a new payment method"
+
+        a[name="security"]
+        #security.tab-pane
+          = simple_form_for @user do |f|
+            fieldset
+              legend Change Password
+              = f.input :password
+              br
+              = f.input :password_confirmation
+              br
+              br
+            .form-actions.col-md-9.col-md-offset-3
+              = f.button :submit, 'Change Password'
+
+          br
+          br
+          br
+          br
+          br
+
+          = simple_form_for @user do |f|
+            fieldset
+              legend Change Email
+              = f.input :email
+              br
+              br
+            .form-actions.col-md-9.col-md-offset-3
+              = f.button :submit, 'Change Email'

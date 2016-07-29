@@ -1,0 +1,27 @@
+#slider.carousel.home-carousel.slide[data-ride="carousel" style="background:url(#{image_url('main_background.jpg')}) no-repeat center center; background-size:cover;"]
+  .carousel-inner[style="text-align:center"]
+    .item.relative.discovery-card.active
+      .va-container.va-container-v.va-container-h
+        p.va-middle.text-center.text-contrast.text-reinvent-desc
+          | Il est temps de réinventer
+          br
+          |  vos évènements
+          br
+  #search-bar-home.search-bar-home
+    .row
+      .col-sm-4.input-search
+        ui-select.select-search-home[ng-model="artSelect.selected", theme='bootstrap']
+          ui-select-match[placeholder='Talent recherché'] {{$select.selected.title}}
+          ui-select-choices[repeat="art as art in artSelect.items"]
+            div[ng-bind-html="art.title"]
+      .col-sm-4.input-search
+        .search-datetimepicker.input-group.date[input-select-date]
+          input.form-control.dt-calendar[type="text" ng-model="endDate"]
+          span.input-group-addon.btn-search-time
+            span.glyphicon.glyphicon-calendar
+      .col-sm-4.input-search
+        a.btn.btn-lg.btn-classic.chercher[ng-click="beginSearch()"]
+          |  Chercher
+  span[scroll-on-click]
+    = image_tag 'arrow.png', class: "anchor-arrow"
+

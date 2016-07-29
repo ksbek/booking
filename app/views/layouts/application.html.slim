@@ -1,0 +1,22 @@
+doctype html
+html[ng-app="enapparte"]
+  head
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : 'Enapparte'
+    meta name="description" content=(content_for?(:description) ? yield(:description) : 'Enapparte')
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body class="#{controller_name} #{action_name}" ng-controller="MainController"
+    = render 'layouts/header'
+    / = content_for?(:messages) ? yield(:messages) : render('layouts/messages')
+    / = render partial: 'layouts/messages', locals: { flash_class: 'floating' }
+    .flash-messages[ng-if="!rootPath" style="position: absolute;"]
+    #content-main-page.main-content.anim-in-out.anim-fade.fadeIn[ui-view=""]
+      / = yield
+    == render 'layouts/footer'
+    - cache do
+      == angular_templates Rails.root.join 'app/views/angular'
+    == javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3&libraries=places"
+    == javascript_include_tag 'https://js.stripe.com/v2/'
+    == javascript_include_tag 'application', 'data-turbolinks-track' => true

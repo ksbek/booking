@@ -1,0 +1,17 @@
+.form-group.datetime[ng-class="{ required: required, 'has-error': (form.$submitted || form[elementId].$touched) && form[elementId].$invalid }"]
+  label.text-right.col-sm-3.control-label for="{{elementId}}"
+    abbr[title="required" ng-if="required"] *
+    '
+    | {{ label }}
+  .col-sm-4
+    .dropdown
+      a.dropdown-toggle[id="{{ linkId }}" data-target="" data-toggle="dropdown" href="" role="button"]
+        .input-group
+          input.form-control[id="{{ elementId }}" ng-required="required" ng-model="model" type="text"]
+          span.input-group-addon
+            i.glyphicon.glyphicon-calendar
+      ul.dropdown-menu[aria-labelledby="dLabel" role="menu"]
+        datetimepicker[data-ng-model="model" data-on-set-time="onTimeSet(newDate, oldDate)" data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)"]
+    .error-messages[ng-show="form.$submitted || form[elementId].$touched"]
+      span.help-block[ng-show="form[elementId].$error.required"]
+        | Please, select date and time

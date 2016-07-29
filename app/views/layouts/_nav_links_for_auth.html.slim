@@ -1,0 +1,50 @@
+li[ng-if="isAuthenticated()"]
+  .dropdown[uib-dropdown]
+    a#dropdownMenu1.dropdown-toggle.user-logged-dropdown [
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="true"
+      uib-dropdown-toggle
+      href="#"
+    ]
+      | {{ currentUser.firstname }}
+      '
+      | {{ currentUser.surname }}
+      span.caret
+    ul.dropdown-menu.dropdown-menu-right.dropdown-list-menu-account[aria-labelledby="dropdownMenu1"]
+      li
+        a[ui-sref="dashboard.index"]
+          | Dashboard
+      li[ng-if="isPerformer()"]
+        a[ui-sref="dashboard.performances.current"]
+          | My Performances
+      li
+        a[ui-sref="dashboard.account.payment"]
+          | Account
+      li
+        a[href="" ng-click="logout()"]
+          | Log out
+li[ng-if="!isAuthenticated()"]
+  a.nav_links.collapse-header.text-center[ui-sref="home.signin"]
+    | Connexion
+li[ng-if="!isAuthenticated()"]
+  a.nav_links.collapse-header.text-center[ui-sref="home.signup"]
+    | Inscription
+li.collapse-hide[ng-if="!isAuthenticated()"]
+  = link_to Constants::Socials::FACEBOOK, class: 'nav_links', target: :blank
+    i.fa-facebook
+li.collapse-hide[ng-if="!isAuthenticated()"]
+  = link_to Constants::Socials::TWITTER, class: 'nav_links', target: :blank
+    i.fa-twitter
+li.collapse-hide[ng-if="!isAuthenticated()"]
+  = link_to Constants::Socials::INSTAGRAM, class: 'nav_links', target: :blank
+    i.fa-instagram
+/li.collapse-hide[ng-if="!isAuthenticated()"]
+/  a.nav_links[ui-sref="home.signup"]
+/    img.google-icon src=image_url('i-google.png') /
+/    img.google-icon.hover src=image_url('i-google-hover.png') /
+/li.collapse-hide[ng-if="!isAuthenticated()"]
+/  a.nav_links[ui-sref="home.signup"]
+/    img.pinterest-icon src=image_url('i-pinterest.png') /
+/    img.pinterest-icon.hover src=image_url('i-pinterest-hover.png') /

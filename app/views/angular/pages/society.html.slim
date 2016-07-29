@@ -1,0 +1,43 @@
+.relative
+  aside.aside_bg
+    .container
+      .page-description
+        h2.title.text-center.heading-text
+          | Sublimez vos évènements ! 
+      .row
+        .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+          .page-description
+            p
+              | Vous représentez une marque, un restaurant, une galerie, un bar ... ?
+            p
+              | ENAPPARTÉ vous propose une sélection riche et éclectique de performeurs culturels pour votre évènement, quels que soient sa finalité et le public attendu.
+            p
+              | Notre leitmotiv est simple : la qualité primera toujours sur la quantité. Nous avons donc rencontré et auditionné chacun de nos performeurs.
+            p
+              | Découvrez leurs profils en toute autonomie, et n'hésitez pas à nous contacter lorsque vous aurez trouvé celui (ou ceux) qui mettra son talent au service de votre évènement.
+            p
+              | Merci, et à très bientôt!
+            br
+            .col-xs-12.col-md-8.society-data
+              form.form-horizontal[name="societyForm" novalidate]
+                input-string[label="Nom" model="society.name" required focus]
+                input-string[label="Ville" model="society.city" required]
+                input-email[label="Mail" model="society.email" required]
+                input-string[label="Téléphone (facultatif)" model="society.phone"]
+                input-string[label="Type d'évènement (facultatif)" model="society.event"]
+                input-integer[label="Budget (facultatif)" model="society.price"]
+                input-text[label="Message" model="society.message" required]
+                .text-right.col-sm-5.society-btn
+                  button.btn.btn-primary[ng-click="societyForm.$valid && submit()"]
+                    | ENVOYER
+                  br
+                  br
+      .row
+        .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+          .page-description
+            p
+              | Notre offre ne concerne pour l'instant que Paris et l'Ile-de-France.
+            p
+              | Les tarifs affichés sur les profils de nos performeurs sont destinés à la clientèle des particuliers. Ils sont susceptibles de varier pour la clientèle professionnelle.
+            br
+

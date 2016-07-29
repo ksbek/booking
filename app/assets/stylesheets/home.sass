@@ -1,0 +1,182 @@
+@import partials/variables
+@import partials/fonts
+
+[id=content-main-page]
+  padding-top: 100px
+  &.full-main-content
+    padding-top: 0
+
+[id=how-it-works]
+  .pre-footer
+    .image-left
+      padding-left: 0
+      @media (max-width: 768px)
+        padding-right: 0
+
+    .image-right
+      padding-right: 0
+      @media (max-width: 768px)
+        padding-left: 0
+
+aside h2.title
+  text-transform: uppercase
+  font-weight: 700
+  padding-top: 60px
+  padding-bottom: 60px
+  font-size: 26px
+  color: $main_color
+  line-height: 37px
+  margin: 0
+  &.white
+    color: $white
+
+.site-how-it-works p
+  font-size: 16px
+  color: rgba(0, 0, 0, 0.5)
+  line-height: 24px
+
+.search-bar-home
+  padding: 0 16.875%
+  margin-top: 3em
+
+  @media (max-width: 767px)
+    margin-top: -40px
+    padding: 0 30px
+
+    .input-search
+      margin-bottom: 15px
+
+  .dt-calendar
+    border-right: none
+    box-shadow: none
+
+  .btn-search-time
+    background-color: #fff
+    border-left: 0
+
+    .glyphicon-calendar
+      font-size: 15px
+
+.search-bar-home,
+.filters
+  input, span
+    border-radius: 0
+  a
+    border-radius: 0
+    font-size: 14px
+    padding-top: 11px
+
+.select-search-home
+  font-family: FuturaLT
+  font-size: 16px
+  height: 40px
+
+  .ui-select-search
+    height: 40px
+
+  .ui-select-match-text,
+  .ui-select-placeholder
+    display: block
+    overflow: hidden
+    text-overflow: ellipsis
+    width: 100%
+    white-space: nowrap
+
+  .ui-select-match
+    .ui-select-toggle
+      border-radius: 0
+      height: 40px
+      padding: 10px 25px 10px 14px
+      color: #6c6c6c
+
+  .ui-select-choices
+    border-radius: 0
+    margin: 10px 0
+    padding: 0
+
+    .ui-select-choices-row
+      .ui-select-choices-row-inner
+        padding: 12px
+        color: #6c6c6c
+
+        &:hover
+          background-color: #fff481
+          color: #002b3f
+
+      &.active
+        .ui-select-choices-row-inner
+          background-color: #fff481
+          color: #002b3f
+
+  option
+    font-family: FuturaLT
+    font-size: 16px
+
+.row.main-description
+  font-family: FuturaLT
+  img
+    width: 50%
+
+p.main-description-header
+  padding-top: 15px
+  text-align: center
+  margin-bottom: 60px
+  font-size: 18px
+  font-family: FuturaLT
+
+
+p.main-description-header.art-description-header
+  margin-bottom: 30px
+
+.relative
+  position: relative
+
+  .button-performer
+    padding: 28px 0 58px
+
+    .btn-performer
+      background-color: #fffca6
+      color: #002b3f
+      font-weight: 600
+      padding: 10px
+
+.btn-performer.main-section
+  padding: 9px 20px 10px 20px
+  font-size: 15px
+  border-radius: 0
+  font-family: FuturaLT
+  &:hover
+    background-color: #002b3f
+    color: #fff481
+    border-color: #002b3f
+
+.btn-lg.btn-classic.chercher
+  width: 100%
+  height: 40px
+  padding: 8px 5px
+  background-color: #fff481
+  color: #002b3f
+  font-family: FuturaLT
+
+  &:hover
+    background-color: #002b3f
+    color: #fff481
+
+.discovery-card
+  background-size: cover
+  background: $aside_background center
+  position: relative
+  margin-bottom: 30px
+
+  .h2
+    color: $white
+    margin: 0
+    padding: 0
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+.society-btn
+  margin-left: 15px
+
+select.form-control
+  transition: none

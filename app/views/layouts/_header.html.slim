@@ -1,0 +1,31 @@
+#header.main-header.navbar.navbar-static-top[role="banner" ng-class="{'has-search': isSearchPage(), home: $state.current.name.startsWith('home') }"]
+  .main-header-inner.row
+    .navbar-header.col-md-5
+      button.navbar-toggle [
+        type="button"
+        data-toggle="collapse"
+        data-target=".bs-navbar-collapse"
+      ]
+        span.sr-only
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+
+      a#the_logo.main-logo[ui-sref="home"]
+        = image_tag( 'logo.png', class: 'logo' )
+
+      .art-select-sidebar[ng-controller="ArtSearchController" ng-show="isSearchPage()"]
+        ui-select.select-search-home[ng-model="artSelect.selected" theme='bootstrap']
+          ui-select-match[placeholder='Talent recherché'] {{$select.selected.title}}
+          ui-select-choices[repeat="art as art in artSelect.items"]
+            div[ng-bind-html="art.title"]
+
+    nav.collapse.navbar-collapse.bs-navbar-collapse[role="navigation"]
+      ul.nav.navbar-nav.list-menu-nav
+        li[ng-if="isAuthenticated() && isPerformer()"]
+          a.btn.btn-performer.btn-leconcept[ui-sref="shows.new"]
+            | Postez votre performance
+        li
+          a.btn.btn-performer.btn-leconcept[ui-sref="pages.concept"]
+            | Le Concept
+        = render 'layouts/nav_links_for_auth'

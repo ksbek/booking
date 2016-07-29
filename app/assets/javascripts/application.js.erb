@@ -1,0 +1,68 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+//= require jquery
+//= require_self
+//= require moment/min/moment.min
+//= require moment/locale/fr
+//= require underscore/underscore-min
+//= require jquery_ujs
+//= require bootstrap-sprockets
+//= require bootstrap/dropdown
+//= require bootstrap.min
+//= require jquery-form/jquery.form
+//= require angular/angular.min
+//= require angular-i18n/angular-locale_fr-fr
+//= require angular-ui-router/release/angular-ui-router.min
+//= require seiyria-bootstrap-slider/dist/bootstrap-slider.min
+//= require angularjs/rails/resource
+//= require angular-sanitize/angular-sanitize.min
+//= require remarkable-bootstrap-notify/dist/bootstrap-notify.min
+//= require angular-moment/angular-moment.min
+//= require angular-notify/dist/angular-notify.min
+//= require angular-utils-pagination/dirPagination
+//= require angular-bootstrap/ui-bootstrap-tpls.min
+//= require angular-devise/lib/devise-min
+//= require ng-focus-if/focusIf.min
+//= require angular-ui-router-tabs
+//= require angular-bootstrap-datetimepicker/src/js/datetimepicker
+//= require angular-bootstrap-datetimepicker/src/js/datetimepicker.templates
+//= require angular-animate/angular-animate.min
+//= require angular-ui-router-anim-in-out/anim-in-out
+//= require stripe-angular/stripe-angular
+//= require angular-credit-cards/release/angular-credit-cards
+//= require moment.min
+//= require bootstrap-datetimepicker.min
+//= require angular-ui-select/dist/select.min
+//= require js-routes
+//= require fullcalendar
+//= require_tree .
+//= require intl-tel-input/build/js/intlTelInput.min
+//= require ngprogress/build/ngprogress.min
+//= require angular-bind-html-compile/angular-bind-html-compile
+//= require ckeditor/init
+//= require ng-ckeditor/ng-ckeditor.min
+
+
+I18n = {
+  'dashboard': {
+    'add_new_address': '<%= I18n.t('dashboard.add_new_address') %>'
+  }
+}
+
+StripePublishableKey = "<%= ENV['STRIPE_PUBLISHABLE_KEY']%>";
+
+$(function(){
+  if(window.location.hash != "") {
+      $('a[href="' + window.location.hash + '"]').click()
+  }
+})

@@ -1,0 +1,307 @@
+@import partials/variables
+@import partials/mixins
+
+.artist-shows
+  background-color: #f2f2f2
+
+.artist-page-cover
+  background-image: asset-url('search-banner.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+  height: 200px
+  margin-bottom: 60px
+  font-size: 30px
+  text-align: center
+  line-height: 200px
+  span
+    border: 3px solid #fff
+    color: #fff
+    display: inline-block
+    font-family: 'FuturaLT Condensed'
+    line-height: 1.4
+    letter-spacing: 5px
+    vertical-align: middle
+    padding: 5px 10px
+    text-transform: uppercase
+
+.artist-page
+  font-family: FuturaLT
+  font-size: 18px
+  margin-bottom: 120px
+  h1
+    font-size: 26px
+    margin-bottom: 30px
+    text-transform: uppercase
+  h4
+    font-size: 18px
+    font-weight: bold
+    margin: 0 0 35px
+    text-transform: uppercase
+
+.my-show-heading
+  margin-top: 75px
+  text-align: center
+
+.artist-name
+  font-weight: bold
+  margin-top: 0
+  margin-left: 265px
+
+// Artist tabs
+.artist-tabs
+  .tab-content
+    margin-top: 30px
+    .thumbnail
+      iframe
+        height: 315px
+  .nav-tabs
+    border-bottom: 1px solid #b1b1b1
+    li
+      &.active > a
+        background: transparent
+      + li > a
+        margin-left: 10px
+      > a
+        background: #f2f2f2
+        border: 1px solid #b1b1b1
+        border-radius: 0
+        color: $main_color
+        font-size: 16px
+        font-weight: bold
+        position: relative
+        top: 1px
+        outline: none
+        text-transform: uppercase
+
+// Artist info
+.artist-info
+  position: relative
+
+.artist-avatar
+  float: left
+  max-height: 220px
+  position: absolute
+  left: 0
+  top: -59px
+  width: 220px
+  img
+    width: 100%
+
+.artist-metadata
+  margin-left: 250px
+
+.artist-idf
+  background: $light_color
+  font-size: 16px
+  font-weight: bold
+  padding: 5px 10px
+
+.artist-bio
+  color: #333
+  // margin-top: 35px
+  &::before
+    content: 'BIO: '
+    color: $main_color
+    display: inline
+    font-size: 16px
+    font-weight: bold
+
+// Artist Gallery
+.artist-gallery
+  overflow: hidden
+  &.three-in-row
+    .artist-gallery-item + .artist-gallery-item:not(:nth-child(3n+1))
+      margin-left: 10px
+  &.four-in-row
+    .artist-gallery-item
+      height: 131px
+      width: 131px
+      + .artist-gallery-item:not(:nth-child(4n+1))
+        margin-left: 10px
+
+.artist-gallery-item
+  float: left
+  height: 144px
+  margin-bottom: 10px
+  width: 144px
+  &:hover img
+    border: 5px solid $light_color
+    cursor: pointer
+
+// Artist modal gallery
+.artist-gallery-modal .modal-dialog
+  width: 100%
+  .close
+    color: $light_color
+    font-size: 50px
+    font-weight: normal
+    opacity: 1
+    position: fixed
+    right: 10px
+    text-shadow: none
+    top: -25px
+
+.artist-gallery-modal .modal-content
+  background: transparent
+  border: none
+  box-shadow: none
+  .carousel
+    height: 640px
+    margin: 0 auto
+    max-width: 640px
+    .item
+      transition: left 0.6s ease-in-out 0s
+      // height: 640px
+      line-height: 640px
+      img
+        border: 5px solid $light_color
+        display: inline-block
+    .carousel-indicators
+      display: none
+    .carousel-control
+      opacity: 1
+      &.right
+        right: -96px
+      &.left
+        left: -106px
+      .glyphicon-chevron-right
+        color: $light_color
+        font-size: 50px
+        height: 45px
+        width: 42px
+        &::before
+          content: ''
+      .glyphicon-chevron-left
+        color: $light_color
+        font-size: 50px
+        height: 45px
+        width: 42px
+        &::before
+          content: ''
+
+// Artist show entry
+.artist-show-entry
+  margin-bottom: 60px
+
+// Artist show card
+.artist-show-card
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: cover
+  color: #fff
+  margin-bottom: 40px
+  min-height: 400px
+  padding: 25px 30px 120px
+  position: relative
+
+.artist-show-card-title span
+  border-bottom: 5px solid #fff
+  display: inline-block
+  font-family: 'FuturaLT Condensed'
+  font-size: 45px
+  letter-spacing: 5px
+  text-transform: uppercase
+  text-shadow: 0 0 2px #333
+  margin-bottom: 15px
+
+.artist-show-card-metadata
+  width: 320px
+  text-shadow: 0 0 2px #333
+  dd:last-child
+    font-size: 36px
+    width: 100%
+
+.artist-show-card-price
+  font-size: 12px
+  font-weight: bold
+  position: absolute
+  bottom: 30px
+  left: 30px
+  .text-uppercase
+    text-shadow: 0 0 2px #333
+    font-size: 15px
+    border: 2px solid
+    padding: 5px
+    text-align: center
+  .price
+    background: $light_color
+    color: $main_color
+    display: inline-block
+    font-size: 45px
+    margin-top: 5px
+    padding: 0 15px
+
+.artist-show-card-actions
+  bottom: 20px
+  +display-flex
+  +flex-wrap(wrap)
+  +justify-content(space-between)
+  left: 250px
+  position: absolute
+  right: 30px
+  .transparent-control
+    +flex(0 0 24%)
+    margin-bottom: 10px
+    position: relative
+    @media (max-width: 991px)
+      +flex(0 0 48%)
+    .input-group
+      background: rgba(0,0,0,0.5)
+    .form-control
+      background: transparent
+      border-radius: 0
+      border-width: 2px 0 2px 2px
+      border-color: #fff
+      color: #fff
+      font-size: 18px
+      height: auto
+      padding-right: 0
+    .form-control::-moz-placeholder
+      color: #fff
+    .form-control::-webkit-input-placeholder
+      color: #fff
+    .input-group-addon
+      background: transparent
+      border-radius: 0
+      border-width: 2px 2px 2px 0
+      border-color: #fff
+      color: #fff
+      cursor: pointer
+    .btn-enapparte-primary
+      font-size: 18px
+      width: 100%
+    .error
+      color: red
+      display: none
+  .transparent-control.input-invalid
+    .form-control
+      border-color: red
+    .input-group-addon
+      border-color: red
+    .error
+      display: block
+
+// Artist show description
+.artist-show-description
+  line-height: 1.8
+
+// Single comment entry
+.comment-entry
+  border-top: 2px solid #e6e6e6
+  margin-top: 20px
+  padding-top: 30px
+
+.comment-sender
+  font-weight: bold
+  margin-bottom: 10px
+  .time-ago
+    font-size: 14px
+
+.comment-rating
+  font-size: 15px
+  margin-bottom: 15px
+
+.comment-text
+  margin-bottom: 30px
+  line-height: 1.8

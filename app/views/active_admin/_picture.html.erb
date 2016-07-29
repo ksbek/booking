@@ -1,0 +1,12 @@
+<% if object.profile_picture %>
+    <div class="image-view" id="<%= object.profile_picture.id %>">
+      <%= link_to(object.profile_picture.image.url, target: '_blank') do %>
+        <%= image_tag(object.profile_picture.image.url(:thumb)) %>
+      <% end %>
+      <% if page == 'edit' %>
+        <p align="center">
+          <%= link_to "Delete", picture_path(id: object.profile_picture.id), method: :delete, remote: true, data: {confirm: 'Are you sure?'} %>
+        </p>
+      <% end %>
+    </div>
+<% end %>

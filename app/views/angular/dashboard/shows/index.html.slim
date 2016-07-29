@@ -1,0 +1,21 @@
+.container[ng-controller="ShowController" ng-init="initShows()"]
+  br
+  .row
+    .col-md-3
+      a.btn.btn-enapparte-primary[ui-sref="shows.new"] Add New Show
+
+    .col-md-9
+      .col-sm-6.col-md-4[ng-repeat="show in shows"]
+        .thumbnail.show
+          img[ng-src="{{ show.coverPictureUrl }}"]
+          .caption.clearfix
+            h3
+              | {{ show.title }}
+            .price.pull-left
+              | {{ show.price | currency:undefined:0 }}
+            .actions.pull-right
+              a[ui-sref="shows.edit({ id: show.id })" title="Edit"]
+                i.glyphicon.glyphicon-pencil
+              '
+              a[href="" title="Delete" ng-click="removeShow(show)"]
+                i.glyphicon.glyphicon-trash

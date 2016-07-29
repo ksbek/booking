@@ -1,0 +1,24 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+      - 'db/schema.rb'
+      - 'bin/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/AlignHash:
+  EnforcedHashRocketStyle: table
+
+Metrics/ClassLength:
+  CountComments: false
+  Exclude:
+    - 'app/controllers/api/v1/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*'

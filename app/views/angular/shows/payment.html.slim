@@ -1,0 +1,124 @@
+.show-payment-page[ng-controller="ShowPaymentController"]
+  .show-payment-cover[ng-style="bannerStyle"]
+    span[] {{::show.artTitle}}
+  .container
+    .artist-show-card[style="background-image : url({{::show.coverPicture}})"]
+      .artist-show-card-title
+        span
+          | {{::show.title }}
+      .artist-info.clearfix
+        figure.artist-avatar
+          img[src="{{show.user.profilePicture.src}}" alt="Profile Avatar"]
+          / = image_tag 'img-3.jpg'
+        h1.artist-name
+          | {{show.user.nickname || show.user.fullName}}
+    div
+      | Réserver via enapparteparis.com, c’est faire le choix de la simplicité.
+      br
+      br
+      | Vous profiterez bientôt d’une performance unique et exclusive, et vous bénéficiez dès maintenant:
+      br
+      br
+      .col-md-offset-1 - &nbsp;&nbsp; d’un paiement 100% sécurisé, par CB ou Paypal.
+      .col-md-offset-1 - &nbsp;&nbsp; de garanties en cas d’annulation,
+      .col-md-offset-1 - &nbsp;&nbsp; d’un accompagnement par une équipe dédiée,
+      .col-md-offset-1 - &nbsp;&nbsp; de chouettes réductions sur votre prochaine réservation!
+      br
+    form.form-horizontal.row[name="paymentForm" novalidate]
+      aside.col-md-4
+        .show-payment-aside
+          dl.enapparte-dl
+            dt date:
+            dd
+              | {{ ::booking.date | amDateFormat:'Do MMMM, YYYY' }}
+            dt time:
+            dd
+              | {{ ::booking.date | amDateFormat:'HH:mm' }}
+            dt number of guests:
+            dd
+              | {{ ::booking.spectators}}
+            dt
+              span ng-if="show.pricePerson"Prix par personne:
+              span ng-if="!show.pricePerson"Prix indicatif par personnee:
+            dd
+              span ng-if="show.pricePerson"
+                | {{ show.price * show.commission | currency:undefined:0 }}
+              span ng-if="!show.pricePerson"
+                | {{ show.price * show.commission / booking.spectators | currency:undefined:0 }}
+            dt.coupon-code coupon code:
+            dd
+              .input-group
+                input.form-control.enapparte-input.has-no-border type='text' ng-model="booking.coupon" placeholder='Enter code'
+                .input-group-btn
+                  .btn.btn-enapparte-primary ng-click="applyCoupon()" Ok
+          .total-price
+            | Prix total
+            span
+              | {{ booking.price | currency:undefined:0 }}
+
+          hr
+          .cancellation
+            a ui-sref="terms({page: 'article9'})" Cancellation Policy
+            p.small
+              | 100% refund 2 days prior to the event. You'll get your
+              |  host's contact information immediately after the host
+              |  confirms your booking.
+
+      .col-md-8
+        .row
+          .col-md-6
+            label.select-label Où votre événement a-t-il lieu?
+            ui-select.enapparte-ui-select ng-model='user.address' theme='bootstrap' onkeypress="return false"
+              ui-select-match [] {{user.address.fullAddress}}
+              ui-select-choices repeat='address in user.addresses track by $index'
+                div ng-if="address.fullAddress != 'Add New Address'" {{address.fullAddress}}
+                div ng-if="address.fullAddress == 'Add New Address'" ui-sref="dashboard.profile.personal" {{address.fullAddress}}
+          .col-md-6
+            label.select-label Choisissez votre moyen de paiement :
+            ui-select.enapparte-ui-select ng-model='user.payment' theme='bootstrap' onkeypress="return false"
+              ui-select-match
+                div ng-if="user.payment.brand && user.payment.brand != 'Add New Card' && user.payment.brand != 'Paypal' " {{user.payment.brand}}, {{user.payment.last4}}
+              ui-select-choices repeat='payment in user.creditCards track by $index'
+                div ng-click="addNewCard()" ng-if="payment.brand == 'Add New Card'" Add New Card
+                div ng-if="payment.brand == 'Paypal'" Paypal
+                div ng-if="payment.brand != 'Add New Card' && payment.brand != 'Paypal'" {{payment.brand}}, {{payment.last4}}
+
+
+        .show-payment-message.col-xs-12
+          .form-group
+            label Laissez un message à votre performeur!
+            textarea.form-control.enapparte-input [
+              placeholder='Enter your message'
+              ng-model='booking.message'
+              ]
+
+        .col-xs-12
+          .terms-checkbox.checkbox
+            label
+              input [
+                name="terms_and_conditions"
+                ng-required="required"
+                type="checkbox"
+                ng-model="booking.accepted"
+              ]
+              | I have read and accept
+              a ui-sref='terms' : b &nbsp;Terms and Conditions.
+
+            .error-messages[ng-show="paymentForm.$submitted || paymentForm[elementId].$touched"]
+              span.help-block [
+                ng-show="paymentForm.terms_and_conditions.$error.required"
+              ]
+                | Please, check it
+        .show-payment-booknow.col-xs-12
+          button.btn.btn-enapparte-primary [
+            type="submit"
+            ng-click="bookingOrder(paymentForm)"
+            ng-disabled="!booking.accepted || !user.payment || user.payment.last4 == '' || !user.address || user.savePending || booking.savePending"
+          ]
+            i.glyphicon.glyphicon-refresh.glyphicon-refresh-animate[ng-show="user.savePending || booking.savePending"]
+            '
+            | Book now
+          .booknow-hint
+            | Le performeur que vous avez choisi a 48 heures pour accepter votre demande de réservation. En général, cela va très vite!
+            br
+            | Le montant est pour l’instant provisionné sur votre compte, et le paiement ne sera définitivement prélevé qu’au lendemain de votre événement

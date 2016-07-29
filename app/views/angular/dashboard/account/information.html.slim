@@ -1,0 +1,8 @@
+#perfomer-payment
+  div[ng-hide="user.stripeConnected"]
+    a.stripe-connect href=(user_omniauth_authorize_path(:stripe_connect))
+      span Connect with Stripe
+  div[ng-show="user.stripeConnected"]
+    p You already installed payment method.
+    a.stripe-connect[ng-click="disconnectStripe()" delete-confirm]
+      span Disconnect

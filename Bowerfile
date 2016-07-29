@@ -1,0 +1,36 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+# asset 'bootstrap'
+
+asset 'jquery-form'
+asset 'angular'
+asset 'angular-resource'
+asset 'angular-bootstrap'
+asset 'angular-sanitize'
+asset 'remarkable-bootstrap-notify'
+asset 'angular-moment', '1.0.0-beta.4'
+asset 'seiyria-bootstrap-slider'
+asset 'angular-notify'
+asset 'angular-utils-pagination'
+asset 'underscore'
+# asset 'smalot-bootstrap-datetimepicker'
+asset 'angular-devise'
+asset 'ng-focus-if'
+asset 'angular-ui-router'
+asset 'intl-tel-input'
+asset 'angular-bootstrap-datetimepicker', github: 'dalelotts/angular-bootstrap-datetimepicker'
+asset 'angular-ui-router-anim-in-out'
+asset 'angular-credit-cards'
+asset 'stripe-angular'
+asset 'angular-i18n'
+# asset 'angular-ui-router-tabs'
+asset 'ng-ckeditor'
+
+asset 'angular-mocks'
+asset 'bootstrap-fileinput'
+asset 'angular-ui-select'
+asset 'angular-bootstrap-select', github: 'joaoneto/angular-bootstrap-select'
+asset 'ngprogress'
+asset 'angular-bind-html-compile'
+

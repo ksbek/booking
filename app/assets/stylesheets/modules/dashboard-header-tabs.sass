@@ -1,0 +1,42 @@
+@import ../partials/variables
+
+.dashboard-header-tabs
+  background-color: $slight_light_color
+  display: block
+  .nav-tabs
+    border-bottom: none
+  .tab-container
+    margin: 0 auto
+    padding: 0 15px
+    li > a,
+    li > a:hover,
+    li > a:focus
+      background: transparent
+      border: none
+      color: $main_color
+      padding: 15px 20px
+    li > a:hover
+      box-shadow: inset 0 -5px 0 $main_color
+    li.active > a
+      box-shadow: inset 0 -5px 0 $main_color
+
+@media (max-width: 767px)
+  .dashboard-header-tabs
+    .tab-container li
+      float: none
+      text-align: center
+
+@media (min-width: 768px)
+  .dashboard-header-tabs
+    .tab-container
+      width: 750px
+
+@media (min-width: 992px)
+  .dashboard-header-tabs
+    .tab-container
+      width: 970px
+
+@media (min-width: 1200px)
+  .dashboard-header-tabs
+    .tab-container
+      width: 1170px

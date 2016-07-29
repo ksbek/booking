@@ -1,0 +1,14 @@
+.form-group.radios[ng-class="{ required: required, 'has-error': (form.$submitted || form[elementId].$touched) && form[elementId].$invalid }"]
+  label.text-right.col-md-3.control-label
+    abbr[title="required" ng-if="required"] *
+    '
+    | {{ label }}
+  .col-md-9
+    .radio[ng-repeat="option in options"]
+      label
+        input[type='radio' name="{{elementId}}" ng-required="required" ng-model="data.model" ng-value="option.value"]
+        '
+        | {{ option.name }}
+    .error-messages[ng-show="form.$submitted || form[elementId].$touched"]
+      span.help-block[ng-show="form[elementId].$error.required"]
+        | Please, select a variant

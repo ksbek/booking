@@ -1,0 +1,17 @@
+common: &common
+  adapter: postgresql
+  encoding: utf8
+  pool: 25
+  #host: localhost
+development:
+  database: booking_development
+  min_messages: warning
+  <<: *common
+staging:
+  database: booking_staging
+  min_messages: warning
+  <<: *common
+test:
+  database: booking_test
+  min_messages: warning
+  <<: *common

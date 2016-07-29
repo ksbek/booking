@@ -1,0 +1,133 @@
+.container.va-container-h
+  width: 100%
+  padding: 0
+
+.results
+  margin-top: 60px
+
+  .show-search
+    position: relative
+    padding: 14px
+    border: 1px solid #b1b1b1
+    border-radius: 0
+    font-family: FuturaLT
+
+    &:not(.unavailable):before
+      content: ''
+      display: block
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: #f2f2f2
+      opacity: 0
+      transition: opacity .2s ease-in-out
+
+    &:hover,
+    &:active
+      text-decoration: none
+
+      &:before
+        opacity: .2
+
+    .placeholder
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      padding: 92px 50px 0
+      background-color: rgba(255, 255, 255, 0.5)
+      text-transform: uppercase
+      color: #002b3f
+      font-size: 30px
+      font-weight: 800
+
+    &.unavailable
+      cursor: default
+
+      &:hover
+        border-color: #b1b1b1
+
+      .placeholder
+        display: inline
+
+    img
+      width: 100%
+
+    .caption
+      height: auto
+
+      h4
+        font-weight: 800
+        color: #002b3f
+
+      .description
+        padding-top: 14px
+
+      .rating
+        float: none
+        margin: 0 auto
+
+.search-page-cover
+  background-image: asset-url('search-banner.jpg')
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center center
+  height: 200px
+  line-height: 200px
+  text-align: center
+  font-size: 30px
+  span
+    border: 3px solid #fff
+    color: #fff
+    display: inline-block
+    font-family: 'FuturaLT Condensed'
+    line-height: 1.4
+    letter-spacing: 5px
+    vertical-align: middle
+    padding: 5px 10px
+    text-transform: uppercase
+
+.filters
+  background-color: #f2f2f2
+  padding-bottom: 50px
+  padding-top: 15px
+
+  @media (min-width: 992px)
+    > .container
+      padding-left: 115px
+      padding-right: 115px
+
+  .input-group--filters
+    margin: 0 auto
+
+    @media (min-width: 768px)
+      max-width: 300px
+
+  .dt-calendar
+    border-right: none
+    box-shadow: none
+    color: #6c6c6c
+    font-family: FuturaLT !important
+
+  .btn-search-time
+    background-color: #fff
+    border-left: 0
+    cursor: pointer
+
+  @media (min-width: 768px)
+    .select-search-home,
+    .ui-select-search,
+    .ui-select-match .ui-select-toggle
+      max-width: 300px
+
+  .select-search-home
+    .ui-select-search
+      color: #6c6c6c
+
+    .ui-select-match
+      .ui-select-toggle
+        .text-muted
+          color: #6c6c6c

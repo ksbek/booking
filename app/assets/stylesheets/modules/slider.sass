@@ -1,0 +1,90 @@
+// Slider specific styles only
+@import ../partials/variables
+@import ../partials/fonts
+
+[id=slider]
+  z-index: 500
+  margin: auto
+  &.home-carousel
+    text-align: center
+    height: 600px
+
+    .carousel-inner
+      height: 400px
+      .discovery-card
+        background: transparent
+
+  .anchor-arrow
+    cursor: pointer
+    padding: 35px 0
+
+  .item
+    margin-bottom: 0 !important
+
+  .item div p
+    font-family: Gemeli-regular, sans-serif
+    font-weight: 400
+    -webkit-font-smoothing: antialiased
+    font-style: normal
+    padding-left: 15px
+    padding-right: 15px
+    font-variant: normal
+    font-size: 44px
+    color: $white
+    line-height: 60px
+    letter-spacing: 1px
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4)
+    &.text-reinvent-desc
+      line-height: 75px
+      font-size: 50px
+      font-family: FuturaLT
+      color: rgb(255, 255, 255)
+      text-align: center
+
+.carousel .item
+  left: 0 !important
+  -webkit-transition: opacity .8s
+
+  /*adjust timing here
+  -moz-transition: opacity .8s
+  -o-transition: opacity .8s
+  transition: opacity .8s
+
+.home-carousel .item
+  height: 570px
+  overflow: hidden
+
+.carousel-control
+  background-image: none !important
+
+/* Fade controls with items
+.next.left, .prev.right
+  opacity: 1
+  z-index: 1
+
+.active.left, .active.right
+  opacity: 0
+  z-index: 2
+
+@media (max-width: 768px)
+  .home-carousel .item
+    height: 380px !important
+
+  [id=slider].affix
+    position: inherit
+    margin-bottom: 54px
+
+@media (max-width: 620px)
+  [id=slider] .item div p
+    font-size: 32px !important
+    line-height: 40px !important
+    padding-bottom: 70px
+
+  #slider.home-carousel
+    height: 420px !important
+
+  .home-carousel .item
+    height: 200px !important
+
+  .carousel-inner
+    height: 200px !important

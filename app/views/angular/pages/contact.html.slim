@@ -1,0 +1,51 @@
+= render 'angular/pages/header_search'
+.relative
+  aside.aside_bg
+    .container
+      h2.title.text-center
+        | Il est temps de réinventer vos évènements !
+      form.form-horizontal[name="contactForm" novalidate]
+        .row
+          .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+            .page-description
+              p
+                | ENAPPARTÉ vous propose une sélection riche et éclectique de performeurs culturels pour votre évènement, quels que soient l'occasion, vos envies et votre budget.
+              p
+                | Vous avez une demande particulière ? Vous souhaitez nous poser des questions ou nous soumettre une idée ?
+              p
+                | N'hésitez pas à nous contacter, nous vous répondrons dans les meilleurs délais. Merci, et à très bientôt !
+              div.clearfix
+              br
+              div.row
+                div.col-sm-5.col-sm-offset-2
+                  a.btn.btn-primary.text-center[ui-sref="home.signin" ng-if="!isAuthenticated()"]
+                    | J'ai un compte : me connecter
+                div.col-sm-5
+                  a.btn.btn-primary.text-center[ui-sref="home.signup" ng-if="!isAuthenticated()"]
+                    | Je m’inscris
+
+              br
+              .col-xs-12.col-md-8
+                div[ng-if="!isAuthenticated()"]
+                  input-string[label="Nom" model="contact.name" required focus]
+                  input-string[label="Ville" model="contact.city" required]
+                  input-email[label="Mail" model="contact.email" required]
+                  input-string[label="Téléphone (facultatif)" model="contact.phone"]
+
+                input-text[label="Message" model="contact.message" required]
+                br
+                .text-right.col-sm-5.society-btn
+                  button.btn.btn-primary[ng-click="contactForm.$valid && submitContact()"]
+                    | ENVOYER
+        .row
+          .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+            .page-description
+              p
+                | Vous pouvez aussi nous contacter par mail :
+                a[href="mailto:jft@enapparteparis.com"]
+                  | jft@enapparteparis.com
+              p
+                | Notre offre ne concerne pour l'instant que Paris et l’Ile-de-France.
+
+              br
+              br

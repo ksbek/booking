@@ -1,0 +1,13 @@
+div[ng-controller="DashboardController"]
+  .tab-banner.container
+    img ng-src='{{activeTab.banner}}'
+
+  tabs [
+    data="tabs"
+    type="tabs"
+    select="setActiveTab"
+    class="dashboard-header-tabs"
+    template-url="ui-router-tabs-custom-ui-view-template.html"
+  ]
+  br
+  .container ui-view='' class="dashboard"

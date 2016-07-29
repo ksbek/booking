@@ -1,0 +1,86 @@
+= render 'angular/pages/header_search'
+.relative[itemscope itemtype="//schema.org/WebPage"]
+  aside.aside_bg
+    .container
+      h2.title.text-center[style="padding-bottom:0 !important; font-size: 26px; margin-bottom: -40px;"]
+        | Découvrez nos talents.
+      h2.title.text-center[style="padding-bottom:0 !important; font-size: 17px;"]
+        | Vivez votre évènement.
+      .row
+        .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+          p.main-description-header[style="text-align:justify;"]
+            | Tous nos performeurs ont été sélectionnés avec le plus grand soin. Et puisque le talent s'apprécie en live, nous les avons tous rencontrés afin de vous proposer une sélection riche et éclectique. Ils vous ont concocté des performances d'exception, spécialement calibrées pour vos évènements privés, quels que soient le lieu ou le nombre d'invités.
+      .row
+        .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+          .row
+            .col-xs-12.col-sm-6
+              .discovery-card
+                a[ui-sref="shows.search({id: 5})" href=""]
+                  = image_tag( 'musique.png', class: 'img-responsive' )
+            .col-xs-12.col-sm-6
+              .discovery-card
+                a[ui-sref="shows.search({id: 10})" href=""]
+                  = image_tag( 'live_painting.png', class: 'img-responsive' )
+            .col-xs-12.col-sm-6
+              .discovery-card
+                a[ui-sref="shows.search({id: 6})" href=""]
+                  = image_tag( 'comdie.png', class: 'img-responsive' )
+            .col-xs-12.col-sm-6
+              .discovery-card
+                a[ui-sref="shows.search({id: 8})" href=""]
+                  = image_tag( 'insolite.png', class: 'img-responsive' )
+      .row
+        .col-sm-8.col-sm-offset-2
+          .text-center.button-performer
+            a.btn-xl.btn.btn-performer.main-section[ui-sref="shows.search"]
+              | Découvrez tous nos performeurs
+aside#how-it-works.site-how-it-works.text-center
+  h2.title[style="padding-bottom: 40px; font-family: FuturaLT !important;"]
+    | COMMENT ÇA MARCHE ?
+  .container
+    .row.main-description
+      .col-sm-4.text-center
+        img src=image_url('search.jpg') /
+        h4.feature_header
+          |  Découvrez
+        p.features_content
+          |  Que vous ayez déjà une idée en tête pour votre évènement ou non, découvrez l’univers des performeurs que nous avons sélectionnés pour vous en parcourant leurs profils.
+      .col-sm-4.text-center
+        img src=image_url('calendar.png') /
+
+        h4.feature_header
+          |  Réservez
+        p.features_content
+          |  Vous avez trouvé le performeur qui vous fera vibrer le jour J ? Tant mieux ! Il ne vous reste plus qu’à indiquer la date de votre événement et à réserver en ligne sur notre site sécurisé.
+      .col-sm-4.text-center
+        img src=image_url('enjoy.jpg') /
+        h4.feature_header
+          |  Partagez
+        p.features_content
+          |  Le jour de votre événement, le performeur que vous aurez choisi apporte son matériel et s’adapte à votre chez-vous. Vous n’avez plus qu’à profiter de cette expérience unique avec vos proches !
+
+  .container.pre-footer
+    .row
+      .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+        .row
+          .col-xs-12.col-sm-6
+            .discovery-card
+              a[ui-sref="pages.contact"]
+                img src=image_url('nouscontacter.png') /
+          .col-xs-12.col-sm-6
+            .discovery-card
+              a[ui-sref="pages.concept" href=""]
+                img src=image_url('concept.png') /
+    .row
+      .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+        a[ui-sref="society"]
+          img src=image_url('society.png') /
+/  .container-fluid.pre-footer
+/    .row
+/      .col-sm-6.text-center.image-left
+/        img src=image_url('nouscontacter.png') /
+/      .col-sm-6.text-center.image-right
+/        img src=image_url('concept.png') /
+/  .container-fluid
+/    .row
+/      img src=image_url('society.png') /

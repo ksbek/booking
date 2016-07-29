@@ -1,0 +1,21 @@
+.showcase
+  .row
+    div.col-md-6.thumbnail-section[ng-repeat="video in videos"]
+      | {{ video.kind }}
+      .thumbnail[ng-bind-html="getEmbedUrl(video)"]
+      button.btn.btn-enapparte-primary.delete[delete-confirm="Are you sure?" ng-click="removeVideo($index)"] Delete
+  br
+  br
+  .row
+    div.new-video-section.thumbnail-section
+      input.video-url.form-control[ng-model="current_video.url" placeholder="Enter url" type="text" required]
+      br
+      br
+      span Platform :
+      '
+      |
+      select.video-kind.form-control[ng-model="current_video.kind"]
+        option ng-repeat=("kind_value in kind_values") ng-selected=("current_video.kind == kind_value.value") value="{{kind_value.value}}"
+          | {{kind_value.name}}
+      button.add-video.btn.btn-enapparte-primary[ng-click="onAddVideoUrl()"] Add Video
+

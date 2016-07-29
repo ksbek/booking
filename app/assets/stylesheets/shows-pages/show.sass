@@ -1,0 +1,65 @@
+.thumbnail.cover-photo
+  cursor: pointer !important
+
+.show-search
+  .caption
+    height: 70px
+    h4
+      height: 15px
+    img.user
+      width: 54px
+      position: absolute
+      bottom: 54px
+      right: 30px
+      border: 3px solid white
+      border-radius: 40px
+
+    .rating
+      float: left
+      margin-right: 10px
+
+    .price
+      position: absolute
+      top: 0px
+      right: 30px
+      font-size: 16px
+      padding: 5px 15px 5px
+      color: white
+      background-color: rgba(0, 0, 0, .5)
+      border-bottom-left-radius: 10px
+      border-bottom-right-radius: 10px
+
+.show-slider
+  .main-image
+    position: relative
+    .left, .right
+      cursor: pointer
+      position: absolute
+      top: 0px
+      height: 100%
+      width: 20%
+      &:hover
+        background: rgba(0, 0, 0, .1)
+        .badge
+          background: rgba(0, 0, 0, .5)
+      .badge
+        position: absolute
+        background: rgba(0, 0, 0, .3)
+        top: 50%
+    .left
+      left: 0px
+      .badge
+        left: 20px
+    .right
+      right: 0px
+      .badge
+        right: 20px
+
+.filter-price
+  .slider
+    width: 100%
+
+.price-person-checkbox
+  padding-left: 25px
+  input[type='checkbox']
+    margin-left: 0

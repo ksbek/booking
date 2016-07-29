@@ -1,0 +1,19 @@
+form.form-horizontal[name="authForm"]
+  .modal-header
+    h3.modal-title
+      | Se connecter
+    p.pull-left
+      a[ui-sref="home.signup"] S'inscrire
+      '
+      ||
+      '
+      a[ui-sref="home.forgot_password"] Mot de passe oublié ?
+  .modal-body
+    input-email[label="Email" model="auth.email" required focus]
+    input-password[label="Mot de passe" model="auth.password" required]
+    input-boolean[label="Se souvenir de moi" model="auth.remember_me"]
+  .modal-footer
+    button.btn.btn-primary[ng-click="authForm.$valid && ok()"]
+      | Se connecter
+    button.btn.btn-default[ng-click="cancel()"]
+      | Annuler

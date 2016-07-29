@@ -1,0 +1,34 @@
+.gallery-pictures[ng-controller="DashboardGalleryPicturesController"]
+  .row
+    .col-xs-6.col-md-3[ng-repeat="picture in pictures"]
+      .thumbnail
+        img[ng-src="{{picture.src}}" width="300" height="300"]
+        .caption
+          .actions.pull-right
+            a[href="javascript: void(0);" ng-click="removePicture(picture, $index)"]
+              i.glyphicon.glyphicon-trash
+        .clearfix
+  br
+
+  form.show.form-horizontal[novalidate name="pictureForm"]
+    .form-inputs[ng-show="newPicture.src"]
+      fieldset
+        legend.col-md-12= "New Picture"
+        br
+        .row
+          .col-xs-6.col-md-3
+            .thumbnail
+              img[ng-src="{{newPicture.src}}" width="300" height="300"]
+              .caption
+                .actions.pull-right
+                  a[href="javascript: void(0);" ng-click="newPicture = {}"]
+                    i.glyphicon.glyphicon-trash
+              .clearfix
+        br
+    input-image-button[ng-hide="newPicture.src" label="Add new picture" model="newPicture" required]
+    div[ng-show="newPicture.src"]
+      button.btn.btn-enapparte-primary[ng-click="savePicture()"] Save Picture
+      '
+      span[ng-show="loading"] Uploading...
+      br
+      br

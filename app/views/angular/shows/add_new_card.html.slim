@@ -1,0 +1,33 @@
+form[novalidate="novalidate" name="cardForm"]
+  .modal-header
+    h3.modal-title
+      | Payment Details
+  .modal-body
+    .row
+      .col-xs-12
+        .form-group
+          label CARD NUMBER
+          input.form-control[type="tel" ng-model="card.number" cc-format cc-number ng-required="true" aria-required="true" required autofocus placeholder="Credit Card Number"]
+      .col-xs-7.col-md-7
+        .form-group[cc-exp]
+          .row
+            .col-xs-6
+              label EXP MONTH
+              select.form-control[ng-model="card.exp_month" cc-exp-month ng-required="true"]
+                option[disabled selected value=""] Month
+                option[ng-repeat="month in months" value="{{$index + 1}}"] {{$index + 1}} - {{month}}
+            .col-xs-6
+              label EXP YEAR
+              select.form-control[ng-model="card.exp_year" cc-exp-year ng-required="true"]
+                option[disabled selected value=""] Year
+                option[ng-repeat="year in years" value="{{year}}"] {{year}}
+      .col-xs-5.col-md-5
+        .form-group
+          label CV CODE
+          input.form-control[type="tel" ng-model="card.cvc" cc-type="cardNumber.$ccType" cc-cvc  ng-required="true"]
+      .col-xs-12
+        button.btn.btn-enapparte-primary.btn-block[type="button" ng-click="addNewCard(cardForm)" ng-disabled="cardForm.$invalid || card.pending"] Add New Card
+
+  .modal-footer
+    button.btn.btn-default[ng-click="$close(false)" ng-disabled="card.pending"]
+      | Annuler

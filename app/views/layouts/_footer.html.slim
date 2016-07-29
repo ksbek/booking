@@ -1,0 +1,49 @@
+.footer
+  .container
+    .pt100.hidden-xs
+    .row
+      .col-md-6.col-sm-6.widget.info-left
+        h4.title.hidden-xs
+          | Plus d’infos
+        .row
+          .col-xs-2
+          ul.col-xs-8.menu
+            li
+              a[ui-sref="pages.about"]
+                | A propos
+            li
+              a[ui-sref="terms"]
+                | C.G.U.
+            li
+              a[ui-sref="pages.concept.works"]
+                | Comment ça marche ?
+            li
+              a[ui-sref="faq"]
+                | Questions Fréquentes
+            li
+              a[ui-sref="pages.contact"]
+                | Contact
+          .col-xs-2
+      .col-md-6.col-sm-6.widget.info-right
+        h4.title.hidden-xs[ng-click="goPerformer()"]
+          | Devenir Performeur
+        / .row
+        /   .col-xs-2
+        /   ul.col-xs-8.menu
+        /     li
+        /   .col-xs-2
+        .row
+          .col-xs-2
+          .col-xs-8
+            = link_to Constants::Socials::FACEBOOK, target: :blank
+              i.fa-facebook.fa-3x.fa
+            = link_to Constants::Socials::TWITTER, target: :blank
+              i.fa-twitter.fa-3x.fa
+            = link_to Constants::Socials::INSTAGRAM, target: :blank
+              i.fa-instagram.fa-3x.fa
+    hr
+    .row
+      .col-md-12.col-sm-12
+        #copyright
+          p
+            | © Copyright 2016 - EnApparté

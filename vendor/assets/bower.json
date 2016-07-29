@@ -1,0 +1,33 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "jquery-form": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-bootstrap": "latest",
+    "angular-sanitize": "latest",
+    "remarkable-bootstrap-notify": "latest",
+    "angular-moment": "1.0.0-beta.4",
+    "seiyria-bootstrap-slider": "latest",
+    "angular-notify": "latest",
+    "angular-utils-pagination": "latest",
+    "underscore": "latest",
+    "angular-devise": "latest",
+    "ng-focus-if": "latest",
+    "angular-ui-router": "latest",
+    "intl-tel-input": "latest",
+    "angular-bootstrap-datetimepicker": "git://github.com/dalelotts/angular-bootstrap-datetimepicker",
+    "angular-ui-router-anim-in-out": "latest",
+    "angular-credit-cards": "latest",
+    "stripe-angular": "latest",
+    "angular-i18n": "latest",
+    "angular-ui-router-tabs": "latest",
+    "ng-ckeditor": "latest",
+    "angular-mocks": "latest",
+    "bootstrap-fileinput": "latest",
+    "angular-ui-select": "latest",
+    "angular-bootstrap-select": "git://github.com/joaoneto/angular-bootstrap-select",
+    "ngprogress": "latest",
+    "angular-bind-html-compile": "latest"
+  }
+}

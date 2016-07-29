@@ -1,0 +1,45 @@
+#payment
+  .row
+    .col-sm-5
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Current Credit Cards
+        .panel-body
+          ul
+            li[ng-repeat="card in creditCards"]
+              span() {{card.brand}}, {{card.last4}}
+              '
+              label.label.label-success[ng-show="card.default"] Default
+              '
+              a[href="" ng-click="makeDefaultCard(card.id)" ng-show="!card.default"] Make Default
+            li[ng-show="!creditCards.length"] No Credit Cards.
+    .col-sm-7
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Payment Details
+        .panel-body
+          form[novalidate="novalidate" name="cardForm"]
+            .row
+              .col-xs-12
+                .form-group
+                  label CARD NUMBER
+                  input.form-control[type="tel" ng-model="card.number" cc-format cc-number ng-required="true" aria-required="true" required autofocus placeholder="Credit Card Number"]
+              .col-xs-7.col-md-7
+                .form-group[cc-exp]
+                  .row
+                    .col-xs-6
+                      label EXP MONTH
+                      select.form-control[ng-model="card.exp_month" cc-exp-month ng-required="true"]
+                        option[disabled selected value=""] Month
+                        option[ng-repeat="month in months" value="{{$index + 1}}"] {{$index + 1}} - {{month}}
+                    .col-xs-6
+                      label EXP YEAR
+                      select.form-control[ng-model="card.exp_year" cc-exp-year ng-required="true"]
+                        option[disabled selected value=""] Year
+                        option[ng-repeat="year in years" value="{{year}}"] {{year}}
+              .col-xs-5.col-md-5
+                .form-group
+                  label CV CODE
+                  input.form-control[type="tel" ng-model="card.cvc" cc-type="cardNumber.$ccType" cc-cvc  ng-required="true"]
+              .col-xs-12
+                button.btn.btn-enapparte-primary.btn-block[type="button" ng-click="addNewCard()" ng-disabled="cardForm.$invalid || card.pending"] Add New Card

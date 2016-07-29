@@ -1,0 +1,35 @@
+// Datepicker's styles for search input
+.search-datetimepicker
+  .dt-calendar
+    height: 40px
+
+  .dropdown-menu
+    border-radius: 0
+    bottom: auto !important
+    top: 45px !important
+    min-width: 100%
+
+    .datepicker .datepicker-days .table-condensed
+      width: 100%
+
+      thead, tbody
+        tr
+          th, td
+            color: #6c6c6c
+            text-align: center
+            font-size: 16px
+            font-family: FuturaLT
+            font-weight: 100
+          td
+            border: 1px solid rgba(221, 221, 221, 0.13)
+            &.day.active
+              background-color: #fffc6a
+            &.day.disabled
+              background-color: #f2f2f2
+
+  .btn-search-time
+    cursor: pointer
+
+  .day:hover
+    cursor: pointer
+    background-color: #fffca6

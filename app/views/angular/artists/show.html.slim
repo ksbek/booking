@@ -1,0 +1,157 @@
+a[ui-sref="shows.search({id: user.art.id})"]
+  .artist-page-cover[ng-style="bannerStyle"]
+    span[] {{user.art.title || 'Tous les performeurs'}}
+
+.artist-page.container
+  .row
+    .col-md-6
+      h1.artist-name
+        span[ng-hide="user.nickname"]
+          | {{user.fullName}}
+        span[ng-show="user.nickname"]
+          | {{user.nickname}}
+      .artist-info.clearfix
+        figure.artist-avatar
+          img[src="{{user.profilePicture.src}}" alt="Profile Avatar"]
+        .artist-metadata
+          dl.enapparte-dl
+            dt Average rating:
+            dd
+              .glyphicon[ng-repeat="n in [].constructor(5) track by $index" ng-class="{'glyphicon-star': $index<user.rating, 'glyphicon-star-empty': $index+1>user.rating}"]
+            dt ART:
+            dd
+              | {{user.art.title}}
+            dt Speciality:
+            dd
+              | {{user.activity}}
+            dt Languages:
+            dd
+              | {{user.availableLanguages}}
+          .artist-idf Je me deplace en IDF
+      .margin-bottom-40
+      uib-tabset justified="true" class="artist-tabs"
+        uib-tab heading="GALLERY" ng-if='user.pictures.length'
+          .artist-gallery.four-in-row
+            .artist-gallery-item [
+              ng-repeat='slide in user.pictures track by $index'
+              ng-click='openGallery(user.pictures, $index)'
+            ]
+              img ng-src='{{slide.src}}' alt='gallery-picture-{{$index + 1}}'
+        uib-tab heading="MUSIC" ng-if='music.url'
+          .thumbnail[ng-bind-html="trustAsHtml(music.url)"]
+        uib-tab heading="VIDEO" ng-if='videos.length'
+          .thumbnail[bind-html-compile="previewVideo"]
+          .artist-gallery.four-in-row
+            .artist-gallery-item [
+              ng-repeat='video in videos track by $index'
+              ng-click='setPreviewVideo(video)'
+            ]
+              img ng-src='{{video.thumbnail}}'
+    .col-md-6
+      .artist-bio[ng-if="user.bio" ng-bind-html="user.bio"]
+
+  .margin-bottom-40
+  .row.artist-shows
+    h1.my-show-heading
+      b MY SHOW
+    .artist-show-entry.clearfix[ng-repeat="show in user.shows"]
+      .artist-show-card.col-xs-12.col-md-12[style="background-image : url({{show.coverPicture}})"]
+        .artist-show-card-title
+          span
+            | {{show.title}}
+        .artist-show-card-metadata
+          dl.enapparte-dl
+            dt average rating:
+            dd
+              .glyphicon [
+                ng-repeat="n in [].constructor(5) track by $index"
+                ng-class="{'glyphicon-star': $index<show.rating, 'glyphicon-star-empty': $index+1>show.rating}"]
+            dt duration of show:
+            dd
+              | {{show.duration}}
+            dt[ng-if="show.spectators"] number of spectators:
+            dd
+              | {{show.spectators}}
+        .artist-show-card-price
+          .text-uppercase[ng-hide="show.pricePerson"] total price
+          .text-uppercase[ng-show="show.pricePerson"] per person
+          .price
+            | {{ show.price | currency:undefined:0 }}
+        .artist-show-card-actions
+          .transparent-control ng-class="{'input-invalid': show.submitted && show.invalid && (!show.date || show.date == '')}"
+            .input-group.search-datetimepicker [input-select-date]
+              input.form-control [
+                type='text'
+                placeholder='Select date'
+                ng-model='show.date'
+                ng-change='validateFields(show)'
+                required
+              ]
+              .input-group-addon
+                .glyphicon.glyphicon-calendar
+            .error
+              | Please fill this field
+          .transparent-control.enapparte-timepicker ng-class="{'input-invalid': show.submitted && show.invalid && (!show.time || show.time == '')}"
+            .input-group [uib-dropdown auto-close='outsideClick']
+              input.form-control [
+                type='text'
+                placeholder='Select time'
+                readonly='true'
+                ng-value="show.time | date:'shortTime'"
+                required
+              ]
+              .input-group-addon
+                .glyphicon.glyphicon-dashboard [uib-dropdown-toggle]
+              div [uib-dropdown-menu]
+                uib-timepicker ng-model='show.time' hour-step="1" minute-step="1"
+            .error
+              | Please fill this field
+          .transparent-control ng-class="{'input-invalid': show.submitted && show.invalid && ((show.pricePerson && (!show.numberOfGuests || show.numberOfGuests == '')) || (show.minAttendees && show.maxSpectators && (show.numberOfGuests < show.minAttendees || show.numberOfGuests > show.maxSpectators)) || (!show.minAttendees && show.maxSpectators && (show.numberOfGuests < 1 || show.numberOfGuests > show.maxSpectators)) || (show.minAttendees && !show.maxSpectators && (show.numberOfGuests < show.minAttendees)) || (!show.minAttendees && !show.maxSpectators && (show.numberOfGuests < 1)))}"
+            .input-group
+              input.form-control [
+                type='text'
+                placeholder='Number of guests'
+                ng-model='show.numberOfGuests'
+                ng-change='validateFields(show)'
+                input-allow-integer=''
+                required
+              ]
+              .input-group-addon
+                .glyphicon.glyphicon-user
+            .error ng-if="!show.numberOfGuests || show.numberOfGuests == ''"
+              | Please fill this field
+            .error ng-if="show.minAttendees && show.maxSpectators && (show.numberOfGuests < show.minAttendees || show.numberOfGuests > show.maxSpectators)"
+              | Please enter a value between {{show.minAttendees}} and {{show.maxSpectators}}
+            .error ng-if="!show.minAttendees && show.maxSpectators && (show.numberOfGuests < 1 || show.numberOfGuests > show.maxSpectators)"
+              | Please enter a value between 1 and {{show.maxSpectators}}
+            .error ng-if="show.minAttendees && !show.maxSpectators && (show.numberOfGuests < show.minAttendees)"
+              | Please enter a value greater than {{show.minAttendees}}
+            .error ng-if="!show.minAttendees && !show.maxSpectators && (show.numberOfGuests < 1)"
+              | Please enter a value greater than 0
+
+          .transparent-control
+            button.btn.btn-enapparte-primary ng-click='bookNow(show)' Book now
+
+      .col-xs-12.col-md-5
+        h4 Gallery
+        .artist-gallery.three-in-row
+          .artist-gallery-item [
+            ng-repeat="picture in show.pictures"
+            ng-click='openGallery(show.pictures, $index)'
+          ]
+            img ng-src='{{picture.src}}' alt='show-picture-{{$index + 1}}'
+      .col-xs-12.col-md-7
+        h4 Description:
+        .artist-show-description[ng-bind-html="show.description" ng-if="show.description"]
+
+        .comments-section
+          .comment-entry[ng-repeat="review in show.reviews"]
+            .comment-sender
+              | {{review.username}}
+              span.time-ago &nbsp; - 5 hours ago
+            .comment-rating
+              .glyphicon [
+                ng-repeat="n in [].constructor(5) track by $index"
+                ng-class="{'glyphicon-star': $index<review.rating, 'glyphicon-star-empty': $index+1>review.rating}"]
+            .comment-text
+              | {{review.review}}

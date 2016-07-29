@@ -1,0 +1,87 @@
+div[ng-controller="UserSearchController"]
+  .search-page-cover ng-style='style'
+    span[] {{artSelect.selected.title || 'Tous les performeurs'}}
+  .filters
+    .container
+      .row
+        .col-xs-12.col-md-10.col-md-offset-1.col-lg-10.col-lg-offset-1
+          p.main-description-header.art-description-header[style="text-align:justify;" ng-show='artIsChosen()']
+            | {{artSelect.selected.mainDescription}}
+          p.main-description-header.art-description-header[style="text-align:justify; font-style: italic" ng-show='artIsChosen()']
+            | {{artSelect.selected.italicDescription}}
+          p.main-description-header.art-description-header[style="text-align:justify;" ng-hide='artIsChosen()']
+            | Tous nos performeurs ont été sélectionnés avec le plus grand soin. Et puisque le talent s'apprécie en live, nous les avons tous rencontrés afin de vous proposer une sélection riche et éclectique. Ils vous ont concocté des performances d'exception, spécialement calibrées pour vos évènements privés, quels que soient le lieu ou le nombre d'invités.
+
+      .col-sm-4.col-xs-12
+        .search-datetimepicker.input-group.date[input-select-start-date]
+          input.form-control.dt-calendar type="text" placeholder="Start date" ng-model="startDate"
+          span.input-group-addon.btn-search-time
+            span.glyphicon.glyphicon-calendar
+      .col-sm-4.col-xs-12
+        .search-datetimepicker.input-group.date[input-select-date id="endDate"]
+          input.form-control.dt-calendar type="text" placeholder="End date" ng-model="endDate"
+          span.input-group-addon.btn-search-time
+            span.glyphicon.glyphicon-calendar
+      .col-sm-4.col-xs-12
+        .form-group
+          ui-select.select-search-home[ng-model="priceRadius.selected", theme='bootstrap']
+            ui-select-match[placeholder='Price radius'] {{$select.selected.title}}
+            ui-select-choices[repeat="price in priceRadii"]
+              div[ng-bind-html="price.title"]
+
+  .results.container
+    .row
+      /! .col-md-3
+        .price
+          filter-price[min="10" max="100000" model="filter.price"]
+
+        .checkbox[ng-repeat="art in arts"]
+          label
+            input[type="checkbox" ng-model="art.checked" ng-click="search()"]
+            '
+            | {{ art.title }}
+
+      .col-md-12
+        .row
+          .col-md-12
+            dir-pagination-controls.pull-right
+        .row
+          .col-md-4.col-sm-6.col-xs-12[dir-paginate="user in users | itemsPerPage:21"]
+            a.show-search.thumbnail[href="#/artists/{{user.id}}"]
+              img[ng-src="{{ user.pictureUrl }}" width="300" height="300"]
+              .caption.text-center
+                p.placeholder[ng-show="user.unavailable"]
+                  | Non disponible pour les dates demandées
+                h4[ng-if="!user.nickname"]= "{{ user.fullName }}"
+                h4[ng-if="user.nickname"]= "{{ user.nickname }}"
+                span= "{{ user.activity }}"
+                p.description= "{{ user.artTitle }}"
+                i.glyphicon.glyphicon-star[ng-repeat="k in range(Math.round(user.rating)) track by $index"]
+                i.glyphicon.glyphicon-star-empty[ng-repeat="k in range(5 - Math.round(user.rating)) track by $index"]
+                /! .length
+                  | {{ show.length }} minutes
+                /! .price
+                  | {{ show.price | currency }}
+
+        .row
+          .col-md-12
+            dir-pagination-controls.pull-right
+
+
+  .container
+    .row
+      .col-md-12
+        .page-description
+          p
+            | Réserver via enapparteparis.com, c’est faire le choix de la simplicité.
+            br
+            | Réservez une performance unique et exclusive, et bénéficiez:
+            ul.list-unstyled
+              li
+                | d’un paiement 100% sécurisé, par CB ou Paypal.
+              li
+                | de garanties en cas d’annulation,
+              li
+                | d’un accompagnement par une équipe dédiée,
+              li
+                | de chouettes réductions sur votre prochaine réservation!.
